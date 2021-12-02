@@ -28,7 +28,7 @@ public class StudentLookupIntegrationTest {
 
     @Test
     void whenAbstractGetterMethodInjects_thenNewInstanceReturned() {
-        var ctx = new ClassPathXmlApplicationContext("beans.xml");
+        var ctx = new ClassPathXmlApplicationContext("beans-lookup.xml");
         var services = ctx.getBean("studentService", StudentServices.class);
 
         assertThat(services.appendMark("Alex",70)).isEqualTo("PASS");
