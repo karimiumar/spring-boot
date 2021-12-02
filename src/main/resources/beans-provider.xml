@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.umar.apps.spring.methodinjection.provider" />
+    
+    <bean id="schoolNotificationProvider" class="org.springframework.beans.factory.config.ProviderCreatingFactoryBean">
+        <property name="targetBeanName">
+            <idref bean="schoolNotification"/>
+        </property>
+    </bean>
+
+    <bean id="schoolNotification" class="com.umar.apps.spring.methodinjection.provider.SchoolNotification" scope="prototype">
+        <constructor-arg index="0" value="notification"/>
+    </bean>
+
+    <bean id="studentServices" class="com.umar.apps.spring.methodinjection.provider.StudentServices" scope="prototype" >
+        <property name="schoolNotificationProvider" ref="schoolNotificationProvider"/>
+    </bean>
+    
+    <bean id="studentBean" class="com.umar.apps.spring.methodinjection.provider.Student">
+        <property name="schoolNotificationProvider" ref="schoolNotificationProvider"/>
+    </bean>
+</beans>

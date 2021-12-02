@@ -6,7 +6,7 @@ import javax.inject.Provider;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component("studentService")
+@Component("studentServices")
 public class StudentServices {
 
     private final Map<String, SchoolNotification> notes = new HashMap<>();
@@ -20,5 +20,13 @@ public class StudentServices {
     public String appendMark(String name, Integer mark) {
         var notification = notes.computeIfAbsent(name, exists -> getNotification(name));
         return notification.addMark(mark);
+    }
+
+    public void setSchoolNotificationProvider(Provider<SchoolNotification> schoolNotificationProvider) {
+        this.schoolNotificationProvider = schoolNotificationProvider;
+    }
+
+    public Provider<SchoolNotification> getSchoolNotificationProvider() {
+        return schoolNotificationProvider;
     }
 }

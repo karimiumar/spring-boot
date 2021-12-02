@@ -23,4 +23,12 @@ public class Student {
     public SchoolNotification getNotification(String name) {
         return schoolNotificationProvider.get();
     }
+
+    public void setSchoolNotificationProvider(Provider<SchoolNotification> schoolNotificationProvider) {
+        this.schoolNotificationProvider = schoolNotificationProvider;
+    }
+
+    public Provider<SchoolNotification> getSchoolNotificationProvider() {
+        return schoolNotificationProvider;
+    }
 }
