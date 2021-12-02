@@ -16,7 +16,7 @@ public class StudentProviderIntegrationTest {
         var student2 = ctx.getBean("studentBean", com.umar.apps.spring.methodinjection.provider.Student.class);
 
         assertThat(student1).isEqualTo(student2);
-        //SchoolNotification has prototype scope and is injected using @Lookup so
+        //SchoolNotification has prototype scope and is injected using javax.inject.Provider<SchoolNotification> so
         //every time a new Prototype instance will be invoked
         var notification1 = student1.getNotification("Alex");
         var notification2 = student2.getNotification("Betty");

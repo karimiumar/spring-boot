@@ -1,5 +1,6 @@
 package com.umar.apps.spring.methodinjection.provider;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Provider;
@@ -11,6 +12,7 @@ public class StudentServices {
 
     private final Map<String, SchoolNotification> notes = new HashMap<>();
 
+    @Autowired
     private Provider<SchoolNotification> schoolNotificationProvider;
 
     public SchoolNotification getNotification(String name) {
