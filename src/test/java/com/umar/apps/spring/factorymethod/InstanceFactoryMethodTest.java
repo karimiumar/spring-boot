@@ -19,6 +19,7 @@ public class InstanceFactoryMethodTest {
     @Test
     void givenFactoryBeanFactoryMethodContext_whenGetBeanDefinitionCount_thenShouldReturn4() {
         assertThat(ctx.getBeanDefinitionCount()).isEqualTo(4);
+        //exactly as defined in factory-method.xml
         assertThat(ctx.getBeanDefinitionNames()).containsExactly("fooFactory", "foo", "barFactory", "bar");
     }
 

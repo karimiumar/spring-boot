@@ -19,6 +19,7 @@ public class StaticFactoryMethodTest {
     @Test
     void givenFactoryMethodContext_whenGetBeanDefinitionCount_thenShouldReturn2() {
         assertThat(ctx.getBeanDefinitionCount()).isEqualTo(2);
+        //exactly as defined in factory-method.xml
         assertThat(ctx.getBeanDefinitionNames()).containsExactly("staticFoo", "staticBar");
     }
 
